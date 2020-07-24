@@ -23,7 +23,7 @@ class PostCrudController extends AbstractCrudController
             TextField::new('title'),
             TextareaField::new('content'),
             CollectionField::new('comments')
-                ->onlyOnForms()
+                ->hideOnIndex()
                 ->allowAdd()
                 ->allowDelete()
                 ->setEntryIsComplex(true)

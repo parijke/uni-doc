@@ -34,7 +34,6 @@ class Post
 
 
     /**
-     * Many User have Many Phonenumbers.
      * @ManyToMany(targetEntity="App\Entity\Comment", cascade={"persist"})
      * @JoinTable(name="post_comments",
      *      inverseJoinColumns={@JoinColumn(name="comment_id", referencedColumnName="id", unique=true)}
