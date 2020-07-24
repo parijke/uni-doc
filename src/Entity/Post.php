@@ -6,6 +6,9 @@ use App\Repository\PostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -29,8 +32,13 @@ class Post
      */
     private $content;
 
+
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="post", cascade={"persist"})
+     * Many User have Many Phonenumbers.
+     * @ManyToMany(targetEntity="App\Entity\Comment", cascade={"persist"})
+     * @JoinTable(name="post_comments",
+     *      inverseJoinColumns={@JoinColumn(name="comment_id", referencedColumnName="id", unique=true)}
+     *      )
      */
     private $comments;
 
